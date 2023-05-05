@@ -6,64 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/left"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="120dp"
-        android:text="LEFT"
-        app:layout_constraintBottom_toTopOf="@+id/down"
-        app:layout_constraintEnd_toStartOf="@+id/down"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/right"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="60dp"
-        android:text="RIGHT"
-        app:layout_constraintBottom_toTopOf="@+id/down"
-        app:layout_constraintStart_toEndOf="@+id/left" />
-
-    <Button
-        android:id="@+id/down"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginBottom="16dp"
-        android:text="DOWN"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.example.info_h2000_ax.DrawingView
-        android:id="@+id/surfaceView"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:id="@+id/vMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/up"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="60dp"
-        android:text="UP"
-        app:iconTint="#4CAF50"
-        app:layout_constraintBottom_toTopOf="@+id/down"
-        app:layout_constraintEnd_toStartOf="@+id/right"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/left" />
+        android:id="@+id/UP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="up"
+        android:onClick="onClickUP"
+        app:layout_constraintBottom_toTopOf="@+id/LEFT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="OnClick" />
 
     <Button
-        android:id="@+id/restart"
-        android:layout_width="87dp"
-        android:layout_height="72dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="15dp"
-        android:text="RESTART"
+        android:id="@+id/LEFT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="left"
+        android:onClick="onClickLEFT"
+        app:layout_constraintBottom_toTopOf="@+id/DOWN"
+        app:layout_constraintEnd_toStartOf="@+id/DOWN" />
+
+    <Button
+        android:id="@+id/RIGHT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="right"
+        android:onClick="onClickRIGHT"
+        app:layout_constraintStart_toEndOf="@+id/UP"
+        app:layout_constraintTop_toBottomOf="@+id/UP" />
+
+    <Button
+        android:id="@+id/DOWN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="24dp"
+        android:text="down"
+        android:onClick="onClickDOWN"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/RIGHT" />
+
+    <Button
+        android:id="@+id/QUIT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="quit"
+        app:layout_constraintBottom_toTopOf="@+id/UP"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/RESTART"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="restart"
+        app:layout_constraintBottom_toTopOf="@+id/UP"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/UP"
+        app:layout_constraintEnd_toStartOf="@+id/QUIT"
+        app:layout_constraintStart_toEndOf="@+id/RESTART"
+        app:layout_constraintTop_toBottomOf="@+id/vMain" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
