@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:gravity="bottom"
+    tools:context=".MainActivity"
+    tools:ignore="MissingDefaultResource">
+
+    <Button
+        android:id="@+id/LEFT"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignBaseline="@+id/DOWN"
+
+        android:layout_marginEnd="10dp"
+        android:onClick="onClickLEFT"
+        android:text="L"
+        app:layout_constraintBottom_toTopOf="@+id/DOWN"
+        app:layout_constraintEnd_toStartOf="@+id/DOWN"
+        app:layout_constraintTop_toBottomOf="@+id/UP"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/UP"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/LEFT"
+        android:layout_alignStart="@+id/LEFT"
+        android:layout_alignEnd="@+id/RIGHT"
+        android:layout_marginBottom="60dp"
+        android:onClick="onClickUP"
+        android:text="U"
+        app:layout_constraintBottom_toTopOf="@+id/DOWN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/RIGHT"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignStart="@+id/DOWN"
+        android:layout_alignTop="@+id/LEFT"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="60dp"
+        android:onClick="onClickRIGHT"
+        android:text="R"
+        app:layout_constraintBottom_toTopOf="@+id/DOWN"
+        app:layout_constraintStart_toEndOf="@+id/DOWN"
+        app:layout_constraintTop_toBottomOf="@+id/UP"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/DOWN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/UP"
+        android:layout_alignEnd="@+id/RIGHT"
+        android:layout_marginBottom="20dp"
+        android:text="D"
+        android:onClick="onClickDOWN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/QUIT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:text="quit"
+        app:layout_constraintBottom_toTopOf="@+id/UP"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/RESTART"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:onClick="Reset"
+        android:text="restart"
+        app:layout_constraintBottom_toTopOf="@+id/UP"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
