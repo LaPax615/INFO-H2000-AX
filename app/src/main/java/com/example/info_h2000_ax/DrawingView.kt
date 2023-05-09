@@ -22,34 +22,17 @@ class DrawingView @JvmOverloads constructor (context: Context, private val dimen
     val dpiX = displayMetrics.xdpi
 
 
-
-    //val dimension = 3
     var param = (screenWidth/(dimension+1)).toFloat()
-    //val param = ((200/dimension)*6).toFloat()
-    //var param = Float()
 
-    //var param = (canvasWidth/dimension)
-    //val canvasWidth = canvas?.width ?: 0
-
-    //val gen = Generator(dimension, param)
 
     var maze = Maze(dimension, dimension, param)
+
     val textPaint = Paint()
-    //var textPaint.textSize = (screenWidth/20).toInt()
 
+    val Gen = Generator(maze, dimension, param) //composition
 
-    val Gen = Generator(maze, dimension, param)
-    //val LesData = maze.generateMaze()
-    var LesData = Gen.generateMaze()
-    //val output = maze.returnWalls()
-    var P = Player(2,3, 3, 3, (param).toFloat(), Gen.returnContraintsMatrix(maze, dimension))
-
-    //val canvasWidth = getPixelFromPercentOfCanvasWidth(canvas, 50f) // 50% of canvas width in pixels
-
-
-
-
-
+    var LesData = Gen.generateMaze()  //maze details
+    var P = Player(2,3, 3, 3, (param).toFloat(), Gen.returnContraintsMatrix(maze, dimension)) //simple communication ou association
 
 
     init {
@@ -107,20 +90,17 @@ class DrawingView @JvmOverloads constructor (context: Context, private val dimen
 
         val situ = P.get_situation()
         canvas?.drawText("Situation: $situ ", 30f, 50f, textPaint)
-        //println("Screen Width is: ${screenWidth} ${dpiX}")
-        //println("Other Width is: ${canvas?.width} ")
-        //maze.printMaze2()
+
 
         for (data in LesData) {
             var x = data.getx()
             var y = data.gety()
             //data.modifwalls(output[(y/param).toInt() - 1][(x/param).toInt() - 1])
             var murs = data.getwalls()
-            val b = Cell(x, y, (param*1.0).toFloat(), murs, param)
+            val b = Cell(data, (param*1.0).toFloat())
             b.draw(canvas)
         }
         P.draw(canvas)
-        //P.get_contraintes()
     }
 
 }
