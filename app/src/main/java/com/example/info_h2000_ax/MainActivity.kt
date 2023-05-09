@@ -9,20 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
-
-
 import java.util.*
-
-
+import kotlin.text.Typography.dagger
 
 
 class MainActivity : AppCompatActivity() {
-
-    //val displayMetrics = resources.displayMetrics
-    //val dpiX = displayMetrics.xdpi
-    //val dpiY = displayMetrics.ydpi
-
-
 
     lateinit var drawingView: DrawingView
 

@@ -2,6 +2,7 @@ package com.example.info_h2000_ax
 
 
 import java.util.*
+import kotlin.random.Random
 
 class Maze(val numRows: Int, val numCols: Int, val parameter: Float) {
 
@@ -103,7 +104,7 @@ class Maze(val numRows: Int, val numCols: Int, val parameter: Float) {
         //var numRows = 5
         //var numCols = 5
 
-        val wallsMatrix = Array(numRows) { Array(numCols) { "" } }
+        var wallsMatrix = Array(numRows) { Array(numCols) { "" } }
         for (row in 0 until numRows) {
             for (col in 0 until numCols) {
                 val cell = maze[row][col]
@@ -116,6 +117,101 @@ class Maze(val numRows: Int, val numCols: Int, val parameter: Float) {
         printMaze()
         println()
         printMaze2()
+
+        /*var counter = 0
+        while (counter < numCols+numCols) {
+            var x = Random.nextInt(1, numCols-1)
+            var y = Random.nextInt(1, numCols-1)
+            //var z = Random.nextInt(0, 4)
+
+            var newWall = "7777"
+
+            var cellC = wallsMatrix[x][y]
+
+            var cellU = wallsMatrix[x][y-1]
+            var cellD = wallsMatrix[x][y+1]
+
+            var cellL = wallsMatrix[x-1][y]
+            var cellR = wallsMatrix[x+1][y]
+
+
+            var charArrayC = cellC.toCharArray()
+
+            var charArrayU = cellU.toCharArray()
+            var charArrayD = cellD.toCharArray()
+
+            var charArrayL = cellL.toCharArray()
+            var charArrayR = cellR.toCharArray()
+
+            if (charArrayC[0] == '1') {
+                //newWall = newWall + "0"
+                charArrayC[0] = '0'
+                charArrayU[2] = '0'
+            }else{
+                charArrayC[0] = '0'
+                charArrayU[2] = '0'
+            }
+
+            if (charArrayC[1] == '1') {
+                //newWall = newWall + "0"
+                charArrayC[1] = '0'
+                charArrayR[3] = '0'
+            }else{
+                charArrayC[1] = '0'
+                charArrayR[3] = '0'
+            }
+
+            if (charArrayC[2] == '1') {
+                //newWall = newWall + "0"
+                charArrayC[2] = '0'
+                charArrayD[0] = '0'
+            }else{
+                charArrayC[2] = '0'
+                charArrayD[0] = '0'
+            }
+
+            if (charArrayC[3] == '1') {
+                //newWall = newWall + "0"
+                charArrayC[3] = '0'
+                charArrayL[1] = '0'
+            }else{
+                charArrayC[3] = '0'
+                charArrayL[1] = '0'
+            }
+
+            /*if (wall[1] == '1') {
+                newWall = newWall + "0"
+            }else{
+                newWall = newWall + "0"
+            }
+
+            if (wall[2] == '1') {
+                newWall = newWall + "0"
+            }else{
+                newWall = newWall + "0"
+            }
+
+            if (wall[3] == '1') {
+                newWall = newWall + "0"
+            }else{
+                newWall = newWall + "0"
+            }*/
+
+            wallsMatrix[x][y] = String(charArrayC)
+
+            wallsMatrix[x][y-1] = String(charArrayU)
+            wallsMatrix[x][y+1] = String(charArrayD)
+
+            wallsMatrix[x-1][y] = String(charArrayL)
+            wallsMatrix[x+1][y] = String(charArrayR)
+
+
+            counter = counter + 1
+        }*/
+
+
+
+
 
         return wallsMatrix
 

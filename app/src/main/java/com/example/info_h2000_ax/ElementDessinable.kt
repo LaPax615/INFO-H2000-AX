@@ -8,12 +8,15 @@ interface ElementDessinable {
     val random: Random
     var paint: Paint
     val r: RectF
+    var color: Int
 
     private fun Int.Companion.toFloat(): Float {
         return Int.Companion.toFloat()
     }
 
-    fun changeCouleur()
+    fun changeCouleur() {
+        color = Color.argb(255, random.nextInt(256), random.nextInt(256), random.nextInt(256))
+    }
 
     fun draw(canvas: Canvas?) {
 

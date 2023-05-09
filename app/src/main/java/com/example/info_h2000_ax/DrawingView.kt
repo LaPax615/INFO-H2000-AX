@@ -8,6 +8,8 @@ import android.util.AttributeSet
 import android.view.SurfaceView
 import java.util.*
 
+import kotlin.random.Random
+
 class DrawingView @JvmOverloads constructor (context: Context, private val dimension: Int, attributes: AttributeSet? = null, defStyleAttr: Int = 0): SurfaceView(context, attributes, defStyleAttr) {
 
     lateinit var canvas: Canvas
@@ -15,7 +17,7 @@ class DrawingView @JvmOverloads constructor (context: Context, private val dimen
     var canvasWidth = 100
 
     val backgroundPaint = Paint()
-    val random = Random()
+    //val random = Random()
 
     val displayMetrics = resources.displayMetrics
     val screenWidth = displayMetrics.widthPixels
@@ -32,7 +34,21 @@ class DrawingView @JvmOverloads constructor (context: Context, private val dimen
     val Gen = Generator(maze, dimension, param) //composition
 
     var LesData = Gen.generateMaze()  //maze details
-    var P = Player(2,3, 3, 3, (param).toFloat(), Gen.returnContraintsMatrix(maze, dimension)) //simple communication ou association
+
+    //var WinX = 3 * (param).toFloat()
+    //var WinY = 3 * (param).toFloat()
+
+    var IntWinX = Random.nextInt(1, dimension)
+    var IntWinY = Random.nextInt(1, dimension)
+
+    var WinX = (IntWinX) * (param).toFloat()
+    var WinY = (IntWinY) * (param).toFloat()
+    //var WinX = Float
+    //var WinY = Float
+
+    var P = Player(2,3, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dimension)) //simple communication ou association
+    var Movements = Gen.PathFinder(Gen.returnContraintsMatrix(LesData, dimension), 2, 3, IntWinX, IntWinY)
+
 
 
     init {
@@ -41,6 +57,8 @@ class DrawingView @JvmOverloads constructor (context: Context, private val dimen
         textPaint.color = Color.BLUE
 
     }
+
+
 
     fun new_maze(dim: Int) {
         maze = Maze(dim, dim, param)
@@ -88,19 +106,33 @@ class DrawingView @JvmOverloads constructor (context: Context, private val dimen
 
         canvas?.drawRect(0F, 0F, width.toFloat(), height.toFloat(), backgroundPaint)
 
-        val situ = P.get_situation()
-        canvas?.drawText("Situation: $situ ", 30f, 50f, textPaint)
+        //val situ = P.get_situation()
+        //canvas?.drawText("Situation: $situ ", 30f, 50f, textPaint)
+
 
 
         for (data in LesData) {
             var x = data.getx()
             var y = data.gety()
+            var WinCell = false
+
+            if (x == WinX && y == WinY) {
+                WinCell = true
+                var murs = data.getwalls()
+                val b = Cell(data, (param*1.0).toFloat(), WinCell)
+                b.draw(canvas)
+            }else{
+                var murs = data.getwalls()
+                val b = Cell(data, (param*1.0).toFloat(), WinCell)
+                b.draw(canvas)
+            }
+
             //data.modifwalls(output[(y/param).toInt() - 1][(x/param).toInt() - 1])
-            var murs = data.getwalls()
-            val b = Cell(data, (param*1.0).toFloat())
-            b.draw(canvas)
+
         }
         P.draw(canvas)
+
+
     }
 
 }
