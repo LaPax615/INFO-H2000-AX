@@ -76,6 +76,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:text="quit"
+        android:onClick="quit"
         app:layout_constraintBottom_toTopOf="@+id/UP"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -85,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:onClick="Reset"
+        android:onClick="reset"
         android:text="restart"
         app:layout_constraintBottom_toTopOf="@+id/UP"
         app:layout_constraintStart_toStartOf="parent" />

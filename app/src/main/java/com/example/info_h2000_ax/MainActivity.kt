@@ -1,7 +1,6 @@
 package com.example.info_h2000_ax
 
-import Timer.Companion.SECONDS_PER_TICK
-import android.graphics.Paint
+
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -10,23 +9,11 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-
-import java.util.*
-import kotlin.random.Random
-import kotlin.text.Typography.dagger
-
-
-import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
-
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var player: Player
-    lateinit var drawingView: DrawingView
+    private lateinit var drawingView: DrawingView
 
 
 
@@ -55,10 +42,14 @@ class MainActivity : AppCompatActivity() {
         println("Left Clicked")
     }
 
-    fun Reset(v: View) {
+    fun reset(v: View) {
         drawingView.player_reset()
         drawingView.invalidate()
         println("Left Clicked")
+    }
+
+    fun quit(v: View) {
+        finish()
     }
 
 
@@ -67,8 +58,6 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        val displayMetrics = resources.displayMetrics
-        val screenWidth = displayMetrics.widthPixels
 
 
 
@@ -110,36 +99,12 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show()
             }
 
-            /*var param = (screenWidth/(dimension?.plus(1)!!)).toFloat()
-            var maze = dimension?.let { it1 -> Maze(it1, dimension, param) }
-            val textPaint = Paint()
-            val Gen = maze?.let { it1 -> Generator(it1, dimension, param) } //composition
-            var LesData = Gen?.generateMaze()  //maze details
-            var IntWinX = Random.nextInt(1, dimension)
-            var IntWinY = Random.nextInt(1, dimension)
-            var WinX = (IntWinX) * (param).toFloat()
-            var WinY = (IntWinY) * (param).toFloat()
-            player = Gen?.let { it1 ->
-                LesData?.let { it2 -> it1.returnContraintsMatrix(it2, dimension) }?.let { it3 ->
-                    Player(2,3, WinX, WinY, (param).toFloat(),
-                        it3
-                    )
-                }
-            }!!*/
 
 
         }
         popupDialog.show()
     }
 
-
-
-        /*super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        drawingView = findViewById<DrawingView>(R.id.vMain)
-        drawingView.setWillNotDraw(false)
-        drawingView.invalidate()*/
 
 
 }

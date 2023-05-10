@@ -1,6 +1,5 @@
 package com.example.info_h2000_ax
 
-import Timer.Companion.SECONDS_PER_TICK
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
@@ -109,13 +108,9 @@ class DrawingView @JvmOverloads constructor (context: Context, private var dimen
 
         param = (screenWidth / (dimension + 1)).toFloat()
         //maze = Maze(dim, dim, param)
-        Gen = Generator(dimension, param) //composition
+        Gen = Gen //composition
 
-        LesData = Gen.generateMaze()
-        IntWinX = Random.nextInt(1, dimension)
-        IntWinY = Random.nextInt(1, dimension)
-        WinX = (IntWinX) * (param).toFloat()
-        WinY = (IntWinY) * (param).toFloat()
+        LesData = LesData
 
         if (active1 == 0) {
             active1 = 1
@@ -172,17 +167,7 @@ class DrawingView @JvmOverloads constructor (context: Context, private var dimen
     }
 
 
-    private suspend fun Any.timer(): Any {
-        val channel = Channel<Int>()
-        var seconds = 0
-        while (true) {
-            delay(SECONDS_PER_TICK * 1000L)
-            seconds += SECONDS_PER_TICK
-            channel.send(seconds)
-            //time = seconds
-        }
-        return channel
-    }
+
 
     fun player_up() {
         P1.go_up()
