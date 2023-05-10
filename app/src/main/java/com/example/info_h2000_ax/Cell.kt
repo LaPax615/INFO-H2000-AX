@@ -19,14 +19,16 @@ class Cell (var data: CellData, val SideLength: Float, var WinCell: Boolean):Ele
     override val r = RectF(PosX, PosY, PosX + SideLength, PosY + SideLength)
     override val random = Random()
 
-    override var color = Color.argb(255, 0, 0, 0)
+    override var color = Color.argb(255, 123, 63, 0)
+
+    //override var color = Color.
 
     private val startX = PosX - SideLength / 2
     private val startY = PosY - SideLength / 2
     private val endX = PosX + SideLength / 2
     private val endY = PosY + SideLength / 2
 
-    var v = (SideLength/12).toInt() * 2
+    var v = (SideLength/18).toInt()
     /*override fun changeCouleur() {
         color = Color.argb(255, random.nextInt(256), random.nextInt(256), random.nextInt(256))
     }*/
@@ -38,37 +40,6 @@ class Cell (var data: CellData, val SideLength: Float, var WinCell: Boolean):Ele
         floatArrayOf(4f, 5f), floatArrayOf(2.5f, 4.5f),
         floatArrayOf(1f, 5f), floatArrayOf(1.5f, 4f)
     )
-
-    fun drawStar(canvas: Canvas?) {
-        // set up the paint
-        var x = PosX
-        var y = PosY
-        var size = SideLength
-        var color = Color.GREEN
-        val paint = Paint().apply {
-            isAntiAlias = true
-            this@Cell.color = Color.GREEN
-        }
-
-        // create a path for the star
-        val path = Path()
-        path.moveTo(starPoints[0][0] * size + x, starPoints[0][1] * size + y)
-        for (i in 1 until starPoints.size) {
-            path.lineTo(starPoints[i][0] * size + x, starPoints[i][1] * size + y)
-        }
-        path.close()
-
-        // fill the path with the specified color
-        paint.color = color
-        canvas?.drawPath(path, paint)
-    }
-
-
-
-
-
-
-
 
 
 
@@ -83,12 +54,6 @@ class Cell (var data: CellData, val SideLength: Float, var WinCell: Boolean):Ele
             paint.style = Paint.Style.FILL
 
             canvas?.drawCircle(PosX, PosY, SideLength/2, paint)
-            println("WINNER CELL")
-            println("WINNER CELL")
-            println("WINNER CELL")
-            println("WINNER CELL")
-            println("WINNER CELL")
-            println("WINNER CELL")
 
         }
 
