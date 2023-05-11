@@ -1,5 +1,6 @@
 package com.example.info_h2000_ax
 
+
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -10,26 +11,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 
-
-import java.util.*
-
-
-
-
 class MainActivity : AppCompatActivity() {
 
-    //val displayMetrics = resources.displayMetrics
-    //val dpiX = displayMetrics.xdpi
-    //val dpiY = displayMetrics.ydpi
+    private lateinit var drawingView: DrawingView
 
 
-
-    lateinit var drawingView: DrawingView
-
-    fun new_Mazee(dim: Int) {
-        drawingView.new_maze(dim)
-        drawingView.invalidate()
-    }
 
 
     fun onClickUP(v: View) {
@@ -56,15 +42,25 @@ class MainActivity : AppCompatActivity() {
         println("Left Clicked")
     }
 
-    fun Reset(v: View) {
+    fun reset(v: View) {
         drawingView.player_reset()
         drawingView.invalidate()
         println("Left Clicked")
     }
 
+    fun quit(v: View) {
+        finish()
+    }
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
+
+
+
 
         // Inflate the pop-up layout
         val popupView = layoutInflater.inflate(R.layout.popup_layout, null)
@@ -102,20 +98,15 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show()
             }
-        }
 
-        // Show the pop-up
+
+
+        }
         popupDialog.show()
-        }
+    }
 
-
-
-        /*super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        drawingView = findViewById<DrawingView>(R.id.vMain)
-        drawingView.setWillNotDraw(false)
-        drawingView.invalidate()*/
 
 
 }
+
+
