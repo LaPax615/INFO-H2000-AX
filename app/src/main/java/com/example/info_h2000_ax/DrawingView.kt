@@ -18,38 +18,33 @@ class DrawingView @JvmOverloads constructor (context: Context, private var dimen
     lateinit var canvas: Canvas
 
 
-
-
-
-
-
     var canvasWidth = 100
 
     val backgroundPaint = Paint()
 
     val screenWidth = resources.displayMetrics.widthPixels
 
-    var param = (screenWidth/(dimension+1)).toFloat()
+    private var param = (screenWidth/(dimension+1)).toFloat()
 
     //var maze = Maze(dimension, dimension, param)
 
     val textPaint = Paint()
 
-    var Gen = Generator(dimension, param) //composition
+    private var Gen = Generator(dimension, param) //composition
 
-    var LesData = Gen.generateMaze()  //maze details
-
-
-
-    var IntWinX = Random.nextInt(1, dimension)
-    var IntWinY = Random.nextInt(1, dimension)
-
-    var WinX = (IntWinX) * (param).toFloat()
-    var WinY = (IntWinY) * (param).toFloat()
+    private var LesData = Gen.generateMaze()  //maze details
 
 
 
-    var Arbitre = ControllingParties()
+    private var IntWinX = Random.nextInt(1, dimension)
+    private var IntWinY = Random.nextInt(1, dimension)
+
+    private var WinX = (IntWinX) * (param).toFloat()
+    private var WinY = (IntWinY) * (param).toFloat()
+
+
+
+    private var Arbitre = ControllingParties()
 
 
     init {
@@ -59,49 +54,16 @@ class DrawingView @JvmOverloads constructor (context: Context, private var dimen
         Arbitre.changeRound()
 
     }
-    var round = Arbitre.round
 
 
     var active1 = 1
     var active2 = 0
 
-    var P1 = Player(2,2, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dimension), "DOWNER", dimension, Color.argb(255, 0, 0, 255), active1) //simple communication ou association
-    var P2 = Player(2,2, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dimension), "DOWNER", dimension, Color.argb(255, 135, 255, 0), active2)
-    var win1 = false
-    var win2 = false
+    private var P1 = Player(2,2, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dimension), "DOWNER", dimension, Color.argb(255, 0, 0, 255), active1) //simple communication ou association
+    private var P2 = Player(2,2, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dimension), "DOWNER", dimension, Color.argb(255, 135, 255, 0), active2)
 
 
 
-    fun reset(dim: Int) {
-        param = (screenWidth / (dim + 1)).toFloat()
-        //maze = Maze(dim, dim, param)
-        Gen = Generator(dim, param) //composition
-
-        LesData = Gen.generateMaze()
-        IntWinX = Random.nextInt(1, dim)
-        IntWinY = Random.nextInt(1, dim)
-        WinX = (IntWinX) * (param).toFloat()
-        WinY = (IntWinY) * (param).toFloat()
-
-        if (active1 == 0) {
-            active1 = 1
-        } else {
-            active1 = 0
-        }
-
-        if (active2 == 0) {
-            active2 = 1
-        } else {
-            active2 = 0
-            active1 = 0
-        }
-
-
-
-        P1 = Player(1, 1, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dim), "UPPER", dim, Color.argb(255, 0, 0, 255), active1) //simple communication ou association
-        P2 = Player(2, 2, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dim), "UPPER", dim, Color.argb(255, 135, 255, 0), active2) //simple communication ou association
-
-    }
 
 
     fun new_maze() {
@@ -194,10 +156,43 @@ class DrawingView @JvmOverloads constructor (context: Context, private var dimen
         evaluateWin()
     }
 
-    fun player_reset() {
+    private fun resetMaze(dim: Int) {
+        param = (screenWidth / (dim + 1)).toFloat()
+        //maze = Maze(dim, dim, param)
+        Gen = Generator(dim, param) //composition
+
+        LesData = Gen.generateMaze()
+        IntWinX = Random.nextInt(1, dim)
+        IntWinY = Random.nextInt(1, dim)
+        WinX = (IntWinX) * (param).toFloat()
+        WinY = (IntWinY) * (param).toFloat()
+
+        if (active1 == 0) {
+            active1 = 1
+        } else {
+            active1 = 0
+        }
+
+        if (active2 == 0) {
+            active2 = 1
+        } else {
+            active2 = 0
+            active1 = 0
+        }
+
+
+
+        P1 = Player(1, 1, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dim), "UPPER", dim, Color.argb(255, 0, 0, 255), active1) //simple communication ou association
+        P2 = Player(2, 2, WinX, WinY, (param).toFloat(), Gen.returnContraintsMatrix(LesData, dim), "UPPER", dim, Color.argb(255, 135, 255, 0), active2) //simple communication ou association
+
+    }
+
+
+
+    private fun player_reset() {
 
         dimension = dimension + 1
-        reset(dimension)
+        resetMaze(dimension)
         active1 = 1
         active2 = 0
 

@@ -4,7 +4,6 @@ class CellData (x: Float, y: Float, walls: String) {
     val cx = x
     val cy = y
     var cwalls = walls
-    var visited = true
 
     fun getx():Float {
         return cx

@@ -23,44 +23,39 @@ class Player(kx: Int, ly: Int, var winX: Float, var winY:Float, par: Float, val 
     //override val random = Random()
     override val r = RectF((x - param/2).toFloat(), (y - param/2).toFloat(), (x + par/2).toFloat(), (y + par/2).toFloat())
 
-    var winXX = winX * par
-    var winYY = winY * par
-    var sx = (x/par).toInt()
-    var sy = (y/par).toInt()
+
 
     override var color = BallColor
 
     val initial_x = x
     val initial_y = y
-    var stepsX = 0
-    var stepsY = 0
 
     var situation = ""
     var win = false
 
     override fun get_contraintes():String {
-        //var PosX = sx
+
         var PosX = (x/par).toInt()
         var PosY = (y/par).toInt()
 
-        //var PosY = sy
+
         var Matrix = mazeData
         var contraintes = mazeData[PosX - 1][PosY - 1]
-        //println("Contraintes ${PosX - 1} ${PosY - 1} ${contraintes}")
+
         return contraintes
     }
 
     override fun evaluateWin() {
         if (x == winX && y == winY) {
             // Player has reached the win cell
-            println("YOU WIN")
+
             situation = "YOU WON"
             win = true
 
             // Create a new AlertDialog to display the message and restart button
 
         } else {
-            println("NOT YET WON")
+
             situation = ""
             win = false
         }
@@ -69,14 +64,14 @@ class Player(kx: Int, ly: Int, var winX: Float, var winY:Float, par: Float, val 
     override fun evaluateWin2(mainActivity: MainActivity) {
         if (x == winX && y == winY) {
             // Player has reached the win cell
-            println("YOU WIN")
+
             situation = "YOU WON"
 
             // Create a new AlertDialog to display the message and restart button
             showPopup(mainActivity)
 
         } else {
-            println("NOT YET WON")
+
             situation = ""
         }
     }

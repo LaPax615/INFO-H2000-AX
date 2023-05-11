@@ -4,17 +4,6 @@ import android.graphics.Color
 import java.util.*
 
 abstract class ElementVariable(var kx: Int, var ly: Int, protected val par: Float, var power: String, var dimension: Int, var operation: Int) {
-    /*abstract fun get_contraintes(): String
-
-    abstract fun go_up()
-
-    abstract fun go_down()
-
-    abstract fun go_left()
-
-    abstract fun go_right()
-
-    abstract fun changeCouleur()*/
 
     protected var Mouvements = 0
     var x = par*kx
